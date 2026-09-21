@@ -1,0 +1,19 @@
+local Wins = workspace.Wins["10"].Touch
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local rootpart = character:WaitForChild("HumanoidRootPart")
+AutoWins = _G.AutoWins
+
+task.spawn(function()
+	while _G.AutoWins == true do
+		if rootpart and Wins then
+			firetouchinterest(rootpart, Wins, 0)
+			task.wait()
+			firetouchinterest(rootpart, Wins, 1)
+			
+		end
+		
+		task.wait(1)
+	end
+	
+end)
