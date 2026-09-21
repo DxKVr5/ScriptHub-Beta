@@ -4,7 +4,7 @@ while true do
 	task.wait(5)
 	if _G.AutoWins == true then
 		local winsFolder = workspace:FindFirstChild("Wins")
-		local winsModel = winsFolder and winsFolder:FindFirstChild("10")
+		local winsModel = winsFolder.["10"]
 		if winsPart then
 			local character = player.Character
 			local rootpart = character and character:FindFirstChild("HumanoidRootPart")
