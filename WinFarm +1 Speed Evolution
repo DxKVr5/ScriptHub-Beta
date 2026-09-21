@@ -1,15 +1,15 @@
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 while true do
-	task.wait(5)
+	task.wait(3)
 	if _G.AutoWins == true then
 		local winsFolder = workspace:FindFirstChild("Wins")
-		local winsModel = winsFolder.["10"]
-		if winsPart then
+		local winsModel = winsFolder and winsFolder:FindFirstChild("10")
+		if winsModel then
 			local character = player.Character
 			local rootpart = character and character:FindFirstChild("HumanoidRootPart")
 			if rootpart then
-				rootpart.CFrame = CFrame.new(winsPart.Position + Vector3.new(0, 10, 0))
+				rootpart.CFrame = CFrame.new(winsModel.Position + Vector3.new(0, 10, 0))
 			end
 		end
 	end
