@@ -1,3 +1,5 @@
+-- This is the Main File that Puts all scripts togather to give you the ScriptHub Script!
+
 --// Load All Scripts \\--
 loadstring(game:HttpGet("https://raw.githubusercontent.com/DxKVr5/UIs/refs/heads/main/ScriptHubUI"))() -- UI
 loadstring(game:HttpGet("https://raw.githubusercontent.com/DxKVr5/Scripts/refs/heads/main/AimBot"))() -- AimBot
