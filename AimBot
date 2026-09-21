@@ -1,4 +1,4 @@
--- WARNING!!: This script is used inside of the ScriptHub-Beta File PLEASE do not execute alone or it will not work!
+-- WARNING!!: This script is only the AimBot function Please Execute the Main File!
 
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
