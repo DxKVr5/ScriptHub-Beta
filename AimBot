@@ -1,3 +1,5 @@
+-- WARNING!!: This script is used inside of the ScriptHub-Beta File PLEASE do not execute alone or it will not work!
+
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
@@ -15,8 +17,8 @@ local function getClosestPlayerHead()
 	local shortestDistance = math.huge
 
 	local localCharacter = localPlayer.Character
-	if not localCharacter or not localCharacter:FindFirstChild("HumanoidRootPart") then 
-		return nil 
+	if not localCharacter or not localCharacter:FindFirstChild("HumanoidRootPart") then
+		return nil
 	end
 
 	local localPos = localCharacter.HumanoidRootPart.Position
@@ -52,13 +54,24 @@ RunService.RenderStepped:Connect(function()
 	-- ONLY run the tracking logic if your GUI toggle is turned on
 	if AimBot == true then
 		local targetHead = getClosestPlayerHead()
+		local localCharacter = localPlayer.Character
 
-		if targetHead and camera then
-			local camPosition = camera.CFrame.Position
-			local targetPosition = targetHead.Position
+		if targetHead and camera and localCharacter then
+			local rootPart = localCharacter:FindFirstChild("HumanoidRootPart")
+			
+			if rootPart then
+				local camPosition = camera.CFrame.Position
+				local targetPosition = targetHead.Position
 
-			-- Lock the camera's orientation directly onto the target's head
-			camera.CFrame = CFrame.lookAt(camPosition, targetPosition)
+				-- Lock the camera's orientation directly onto the target's head
+				camera.CFrame = CFrame.lookAt(camPosition, targetPosition)
+
+				-- Rotate the body to face the target on the horizontal (X and Z) plane
+				local currentRootPos = rootPart.CFrame.Position
+				local flatTargetPosition = Vector3.new(targetPosition.X, currentRootPos.Y, targetPosition.Z)
+				rootPart.CFrame = CFrame.lookAt(currentRootPos, flatTargetPosition)
+			end
 		end
 	end
 end)
+
