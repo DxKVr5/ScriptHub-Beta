@@ -1,0 +1,424 @@
+-- WARNING!!: This script only loads The ScriptHub UI Please Use the Main File to Execute.
+
+local ScriptHubBETA = Instance.new("ScreenGui")
+local Min = Instance.new("Frame")
+local Bar = Instance.new("Frame")
+local Move = Instance.new("ImageLabel")
+local Open = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+local Opened = Instance.new("Frame")
+local Base = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local Title = Instance.new("Frame")
+local UICorner_3 = Instance.new("UICorner")
+local TitleText = Instance.new("TextLabel")
+local Close = Instance.new("TextButton")
+local Minamise = Instance.new("TextButton")
+local TabSwitcher = Instance.new("Frame")
+local TabsScrollingFrame = Instance.new("ScrollingFrame")
+local GunGames = Instance.new("TextButton")
+local UICorner_4 = Instance.new("UICorner")
+local TabsInner = Instance.new("Frame")
+local UICorner_5 = Instance.new("UICorner")
+local GunGames_2 = Instance.new("ScrollingFrame")
+local Aimbot = Instance.new("Frame")
+local UICorner_6 = Instance.new("UICorner")
+local Lable = Instance.new("TextLabel")
+local ENABLED = Instance.new("TextButton")
+local UICorner_7 = Instance.new("UICorner")
+local DISABLED = Instance.new("TextButton")
+local UICorner_8 = Instance.new("UICorner")
+
+--Properties:
+
+ScriptHubBETA.Name = "ScriptHub BETA"
+ScriptHubBETA.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScriptHubBETA.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Min.Name = "Min"
+Min.Parent = ScriptHubBETA
+Min.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Min.BackgroundTransparency = 1.000
+Min.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Min.BorderSizePixel = 0
+Min.Position = UDim2.new(0.00389673654, 0, 0.0137096774, 0)
+Min.Size = UDim2.new(0, 250, 0, 50)
+
+Bar.Name = "Bar"
+Bar.Parent = Min
+Bar.BackgroundColor3 = Color3.fromRGB(21, 21, 21)
+Bar.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Bar.BorderSizePixel = 0
+Bar.Size = UDim2.new(0, 250, 0, 50)
+Bar.Visible = false
+
+Move.Name = "Move"
+Move.Parent = Bar
+Move.Active = true
+Move.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Move.BackgroundTransparency = 1.000
+Move.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Move.BorderSizePixel = 0
+Move.Position = UDim2.new(0.0359999985, 0, 0, 0)
+Move.Size = UDim2.new(0, 50, 0, 50)
+Move.Image = "rbxassetid://2484276666"
+Move.ImageColor3 = Color3.fromRGB(255, 37, 59)
+
+Open.Name = "Open"
+Open.Parent = Bar
+Open.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Open.BackgroundTransparency = 1.000
+Open.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Open.BorderSizePixel = 0
+Open.Position = UDim2.new(0.236000001, 0, 0, 0)
+Open.Size = UDim2.new(0, 191, 0, 50)
+Open.Font = Enum.Font.AmaticSC
+Open.Text = "Open"
+Open.TextColor3 = Color3.fromRGB(255, 37, 59)
+Open.TextScaled = true
+Open.TextSize = 14.000
+Open.TextWrapped = true
+
+UICorner.Parent = Bar
+
+Opened.Name = "Opened"
+Opened.Parent = ScriptHubBETA
+Opened.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Opened.BackgroundTransparency = 1.000
+Opened.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Opened.BorderSizePixel = 0
+Opened.Position = UDim2.new(0.335606426, 0, 0.324193537, 0)
+Opened.Size = UDim2.new(0, 675, 0, 435)
+
+Base.Name = "Base"
+Base.Parent = Opened
+Base.BackgroundColor3 = Color3.fromRGB(21, 21, 21)
+Base.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Base.BorderSizePixel = 0
+Base.Position = UDim2.new(-0.000689923298, 0, 5.55630395e-05, 0)
+Base.Size = UDim2.new(0, 675, 0, 435)
+
+UICorner_2.Parent = Base
+
+Title.Name = "Title"
+Title.Parent = Opened
+Title.Active = true
+Title.BackgroundColor3 = Color3.fromRGB(21, 21, 21)
+Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(-0.000689923298, 0, 5.55630395e-05, 0)
+Title.Size = UDim2.new(0, 675, 0, 70)
+
+UICorner_3.Parent = Title
+
+TitleText.Name = "TitleText"
+TitleText.Parent = Title
+TitleText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TitleText.BackgroundTransparency = 1.000
+TitleText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TitleText.BorderSizePixel = 0
+TitleText.Position = UDim2.new(0.0325925909, 0, 0.142857149, 0)
+TitleText.Size = UDim2.new(0, 200, 0, 50)
+TitleText.Font = Enum.Font.Sarpanch
+TitleText.Text = "ScriptHub Beta"
+TitleText.TextColor3 = Color3.fromRGB(255, 37, 59)
+TitleText.TextScaled = true
+TitleText.TextSize = 14.000
+TitleText.TextStrokeColor3 = Color3.fromRGB(175, 175, 175)
+TitleText.TextWrapped = true
+
+Close.Name = "Close"
+Close.Parent = Title
+Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Close.BackgroundTransparency = 1.000
+Close.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Close.BorderSizePixel = 0
+Close.Position = UDim2.new(0, 616, 0, 22)
+Close.Size = UDim2.new(0, 25, 0, 25)
+Close.Font = Enum.Font.JosefinSans
+Close.Text = "X"
+Close.TextColor3 = Color3.fromRGB(255, 37, 59)
+Close.TextScaled = true
+Close.TextSize = 14.000
+Close.TextWrapped = true
+
+Minamise.Name = "Minamise"
+Minamise.Parent = Title
+Minamise.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Minamise.BackgroundTransparency = 1.000
+Minamise.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Minamise.BorderSizePixel = 0
+Minamise.Position = UDim2.new(0, 563, 0, 22)
+Minamise.Size = UDim2.new(0, 25, 0, 25)
+Minamise.Font = Enum.Font.JosefinSans
+Minamise.Text = "_"
+Minamise.TextColor3 = Color3.fromRGB(255, 37, 59)
+Minamise.TextScaled = true
+Minamise.TextSize = 14.000
+Minamise.TextWrapped = true
+
+TabSwitcher.Name = "TabSwitcher"
+TabSwitcher.Parent = Opened
+TabSwitcher.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TabSwitcher.BackgroundTransparency = 1.000
+TabSwitcher.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TabSwitcher.BorderSizePixel = 0
+TabSwitcher.Position = UDim2.new(-0.00148148148, 0, 0.160919547, 0)
+TabSwitcher.Size = UDim2.new(0, 170, 0, 365)
+
+TabsScrollingFrame.Name = "TabsScrollingFrame"
+TabsScrollingFrame.Parent = TabSwitcher
+TabsScrollingFrame.Active = true
+TabsScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TabsScrollingFrame.BackgroundTransparency = 1.000
+TabsScrollingFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TabsScrollingFrame.BorderSizePixel = 0
+TabsScrollingFrame.Size = UDim2.new(0, 170, 0, 365)
+TabsScrollingFrame.ScrollBarThickness = 5
+
+GunGames.Name = "GunGames"
+GunGames.Parent = TabsScrollingFrame
+GunGames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GunGames.BackgroundTransparency = 1.000
+GunGames.BorderColor3 = Color3.fromRGB(0, 0, 0)
+GunGames.BorderSizePixel = 0
+GunGames.Position = UDim2.new(0.0705882385, 0, 0.0232876707, 0)
+GunGames.Size = UDim2.new(0, 147, 0, 50)
+GunGames.Font = Enum.Font.Sarpanch
+GunGames.Text = "Gun Games"
+GunGames.TextColor3 = Color3.fromRGB(255, 37, 59)
+GunGames.TextSize = 35.000
+GunGames.TextWrapped = true
+
+UICorner_4.Parent = GunGames
+
+TabsInner.Name = "TabsInner"
+TabsInner.Parent = Opened
+TabsInner.BackgroundColor3 = Color3.fromRGB(44, 44, 44)
+TabsInner.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TabsInner.BorderSizePixel = 0
+TabsInner.Position = UDim2.new(0.267962962, 0, 0.177298844, 0)
+TabsInner.Size = UDim2.new(0, 483, 0, 349)
+
+UICorner_5.Parent = TabsInner
+
+GunGames_2.Name = "GunGames"
+GunGames_2.Parent = TabsInner
+GunGames_2.Active = true
+GunGames_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GunGames_2.BackgroundTransparency = 1.000
+GunGames_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+GunGames_2.BorderSizePixel = 0
+GunGames_2.Size = UDim2.new(0, 477, 0, 349)
+GunGames_2.ScrollBarThickness = 5
+
+Aimbot.Name = "Aimbot"
+Aimbot.Parent = GunGames_2
+Aimbot.BackgroundColor3 = Color3.fromRGB(21, 21, 21)
+Aimbot.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Aimbot.BorderSizePixel = 0
+Aimbot.Position = UDim2.new(0.035639286, 0, 0.0429799445, 0)
+Aimbot.Size = UDim2.new(0, 442, 0, 50)
+
+UICorner_6.Parent = Aimbot
+
+Lable.Name = "Lable"
+Lable.Parent = Aimbot
+Lable.BackgroundColor3 = Color3.fromRGB(255, 37, 59)
+Lable.BackgroundTransparency = 1.000
+Lable.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Lable.BorderSizePixel = 0
+Lable.Position = UDim2.new(0.0520361997, 0, 0, 0)
+Lable.Size = UDim2.new(0, 200, 0, 50)
+Lable.Font = Enum.Font.SourceSans
+Lable.Text = "AIMBOT"
+Lable.TextColor3 = Color3.fromRGB(255, 255, 255)
+Lable.TextSize = 35.000
+Lable.TextWrapped = true
+
+ENABLED.Name = "ENABLED"
+ENABLED.Parent = Aimbot
+ENABLED.BackgroundColor3 = Color3.fromRGB(50, 193, 6)
+ENABLED.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ENABLED.BorderSizePixel = 0
+ENABLED.Position = UDim2.new(0.559000015, 0, 0.119999997, 0)
+ENABLED.Size = UDim2.new(0, 170, 0, 38)
+ENABLED.Visible = false
+ENABLED.Font = Enum.Font.Sarpanch
+ENABLED.Text = "ENABLED"
+ENABLED.TextColor3 = Color3.fromRGB(255, 255, 255)
+ENABLED.TextSize = 30.000
+
+UICorner_7.Parent = ENABLED
+
+DISABLED.Name = "DISABLED"
+DISABLED.Parent = Aimbot
+DISABLED.BackgroundColor3 = Color3.fromRGB(241, 37, 40)
+DISABLED.BorderColor3 = Color3.fromRGB(0, 0, 0)
+DISABLED.BorderSizePixel = 0
+DISABLED.Position = UDim2.new(0.558823526, 0, 0.119999997, 0)
+DISABLED.Size = UDim2.new(0, 170, 0, 38)
+DISABLED.Font = Enum.Font.Sarpanch
+DISABLED.Text = "DISABLED"
+DISABLED.TextColor3 = Color3.fromRGB(255, 255, 255)
+DISABLED.TextSize = 30.000
+
+UICorner_8.Parent = DISABLED
+
+-- Scripts:
+
+local function UDXZC_fake_script() -- Move.DragScript 
+	local script = Instance.new('LocalScript', Move)
+
+	-- Dragging the Move icon moves the whole Min bar
+	local UserInputService = game:GetService("UserInputService")
+	
+	local move = script.Parent
+	local min = move.Parent.Parent -- Move -> Bar -> Min
+	
+	local dragging = false
+	local dragStart, startPos
+	
+	move.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = min.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+			local delta = input.Position - dragStart
+			min.Position = UDim2.new(
+				startPos.X.Scale, startPos.X.Offset + delta.X,
+				startPos.Y.Scale, startPos.Y.Offset + delta.Y
+			)
+		end
+	end)
+	
+end
+coroutine.wrap(UDXZC_fake_script)()
+local function CEERZR_fake_script() -- Open.Open 
+	local script = Instance.new('LocalScript', Open)
+
+	-- Open: hide the Min bar, show the Opened window
+	local button = script.Parent
+	local min = button.Parent
+	local screenGui = script:FindFirstAncestorOfClass("ScreenGui")
+	local opened = screenGui.Opened
+	
+	button.MouseButton1Click:Connect(function()
+		if min then
+			min.Visible = false
+		end
+		if opened then
+			opened.Visible = true
+		end
+	end)
+	
+	
+end
+coroutine.wrap(CEERZR_fake_script)()
+local function SNNT_fake_script() -- Title.DragScript 
+	local script = Instance.new('LocalScript', Title)
+
+	-- Dragging the Title bar moves the whole window (Opened frame)
+	local UserInputService = game:GetService("UserInputService")
+	
+	local title = script.Parent
+	local window = title.Parent
+	
+	local dragging = false
+	local dragStart, startPos
+	
+	title.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = window.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+			local delta = input.Position - dragStart
+			window.Position = UDim2.new(
+				startPos.X.Scale, startPos.X.Offset + delta.X,
+				startPos.Y.Scale, startPos.Y.Offset + delta.Y
+			)
+		end
+	end)
+	
+end
+coroutine.wrap(SNNT_fake_script)()
+local function TWKFGE_fake_script() -- Close.Close 
+	local script = Instance.new('LocalScript', Close)
+
+	-- Close: removes the whole UI for this player
+	local screenGui = script:FindFirstAncestorOfClass("ScreenGui")
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if screenGui then
+			screenGui:Destroy()
+		end
+	end)
+	
+end
+coroutine.wrap(TWKFGE_fake_script)()
+local function SAXANQ_fake_script() -- Minamise.Minamise 
+	local script = Instance.new('LocalScript', Minamise)
+
+	local button = script.Parent
+	local opened = button.Parent.Parent -- Title -> Opened
+	local screenGui = script:FindFirstAncestorOfClass("ScreenGui")
+	local min = screenGui.Min.Bar
+	
+	button.MouseButton1Click:Connect(function()
+		if opened then
+			opened.Visible = false
+		end
+		if min then
+			min.Visible = true
+		end
+	end)
+end
+coroutine.wrap(SAXANQ_fake_script)()
+local function XZFU_fake_script() -- ENABLED.Disable 
+	local script = Instance.new('LocalScript', ENABLED)
+
+	local Button = script.Parent
+	local DISABLED = script.Parent.Parent.DISABLED
+	local AimBot = _G.AimBot
+	
+	Button.MouseButton1Click:Connect(function()
+		DISABLED.Visible = true
+		Button.Visible = false
+		_G.AimBot = false
+	end)
+end
+coroutine.wrap(XZFU_fake_script)()
+local function JTGG_fake_script() -- DISABLED.Enable 
+	local script = Instance.new('LocalScript', DISABLED)
+
+	local Button = script.Parent
+	local ENABLED = script.Parent.Parent.ENABLED
+	local AimBot = _G.AimBot
+	
+	Button.MouseButton1Click:Connect(function()
+		ENABLED.Visible = true
+		Button.Visible = false
+		_G.AimBot = true
+	end)
+end
+coroutine.wrap(JTGG_fake_script)()
