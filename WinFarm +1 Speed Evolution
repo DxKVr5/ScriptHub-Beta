@@ -1,19 +1,17 @@
-local Wins = workspace.Wins["10"].Touch
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local rootpart = character:WaitForChild("HumanoidRootPart")
-AutoWins = _G.AutoWins
-
-task.spawn(function()
-	while _G.AutoWins == true do
-		if rootpart and Wins then
-			firetouchinterest(rootpart, Wins, 0)
-			task.wait()
-			firetouchinterest(rootpart, Wins, 1)
-			
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+while true do
+	task.wait(1)
+	if _G.AutoWins == true then
+		local winsFolder = workspace:FindFirstChild("Wins")
+		local winsModel = winsFolder and winsFolder:FindFirstChild("10")
+		local winsPart = winsModel and winsModel:FindFirstChild("Touch")
+		if winsPart then
+			local character = player.Character
+			local rootpart = character and character:FindFirstChild("HumanoidRootPart")
+			if rootpart then
+				rootpart.CFrame = CFrame.new(winsPart.Position + Vector3.new(0, 3, 0))
+			end
 		end
-		
-		task.wait(1)
 	end
-	
-end)
+end
