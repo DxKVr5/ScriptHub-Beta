@@ -1,0 +1,64 @@
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+
+local localPlayer = Players.LocalPlayer
+local camera = Workspace.CurrentCamera
+
+-- Set up the global variable if it doesn't exist yet to prevent errors
+if _G.AimBot == nil then
+	_G.AimBot = false
+end
+
+local function getClosestPlayerHead()
+	local closestHead = nil
+	local shortestDistance = math.huge
+
+	local localCharacter = localPlayer.Character
+	if not localCharacter or not localCharacter:FindFirstChild("HumanoidRootPart") then 
+		return nil 
+	end
+
+	local localPos = localCharacter.HumanoidRootPart.Position
+
+	for _, player in ipairs(Players:GetPlayers()) do
+		if player ~= localPlayer then
+			local character = player.Character
+
+			if character and character:FindFirstChild("Head") and character:FindFirstChild("HumanoidRootPart") then
+				local humanoid = character:FindFirstChildOfClass("Humanoid")
+
+				if humanoid and humanoid.Health > 0 then
+					local targetPos = character.HumanoidRootPart.Position
+					local distance = (targetPos - localPos).Magnitude
+
+					if distance < shortestDistance then
+						shortestDistance = distance
+						closestHead = character.Head
+					end
+				end
+			end
+		end
+	end
+
+	return closestHead
+end
+
+-- Update loop running before every frame renders
+RunService.RenderStepped:Connect(function()
+	-- Assign your local variable from the global variable
+	local AimBot = _G.AimBot
+
+	-- ONLY run the tracking logic if your GUI toggle is turned on
+	if AimBot == true then
+		local targetHead = getClosestPlayerHead()
+
+		if targetHead and camera then
+			local camPosition = camera.CFrame.Position
+			local targetPosition = targetHead.Position
+
+			-- Lock the camera's orientation directly onto the target's head
+			camera.CFrame = CFrame.lookAt(camPosition, targetPosition)
+		end
+	end
+end)
