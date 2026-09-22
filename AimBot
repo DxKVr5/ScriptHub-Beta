@@ -46,20 +46,25 @@ local function getClosestPlayerHead()
 	return closestHead
 end
 
+-- Track the previous state of the toggle to catch when it turns OFF
+local lastToggleState = false
+
 -- Update loop running before every frame renders
 RunService.RenderStepped:Connect(function()
-	-- Assign your local variable from the global variable
 	local AimBot = _G.AimBot
+	local localCharacter = localPlayer.Character
 
-	-- ONLY run the tracking logic if your GUI toggle is turned on
 	if AimBot == true then
 		local targetHead = getClosestPlayerHead()
-		local localCharacter = localPlayer.Character
 
 		if targetHead and camera and localCharacter then
 			local rootPart = localCharacter:FindFirstChild("HumanoidRootPart")
+			local humanoid = localCharacter:FindFirstChildOfClass("Humanoid")
 			
-			if rootPart then
+			if rootPart and humanoid then
+				-- FIX: Disable Roblox's default movement fighting mechanics
+				humanoid.AutoRotate = false 
+
 				local camPosition = camera.CFrame.Position
 				local targetPosition = targetHead.Position
 
@@ -72,6 +77,16 @@ RunService.RenderStepped:Connect(function()
 				rootPart.CFrame = CFrame.lookAt(currentRootPos, flatTargetPosition)
 			end
 		end
+	else
+		-- FIX: When you flip the UI toggle to false, give control back to the player
+		if lastToggleState == true and localCharacter then
+			local humanoid = localCharacter:FindFirstChildOfClass("Humanoid")
+			if humanoid then
+				humanoid.AutoRotate = true
+			end
+		end
 	end
+	
+	-- Save current toggle state for the next frame
+	lastToggleState = AimBot
 end)
-
