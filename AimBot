@@ -7,7 +7,6 @@ local Workspace = game:GetService("Workspace")
 local localPlayer = Players.LocalPlayer
 local camera = Workspace.CurrentCamera
 
--- Set up the global variable if it doesn't exist yet to prevent errors
 if _G.AimBot == nil then
 	_G.AimBot = false
 end
@@ -46,7 +45,9 @@ local function getClosestPlayerHead()
 	return closestHead
 end
 
--- Update loop running before every frame renders
+-- Tracks when the toggle state switches from True to False
+local lastToggleState = false
+
 RunService.RenderStepped:Connect(function()
 	local AimBot = _G.AimBot
 	local localCharacter = localPlayer.Character
@@ -58,17 +59,29 @@ RunService.RenderStepped:Connect(function()
 			local rootPart = localCharacter:FindFirstChild("HumanoidRootPart")
 			
 			if rootPart then
+				-- FIX 1: Override One Tap's camera script by forcing Scriptable mode
+				camera.CameraType = Enum.CameraType.Scriptable
+
 				local camPosition = camera.CFrame.Position
 				local targetPosition = targetHead.Position
 
-				-- 1. Lock the camera orientation directly onto the target
+				-- 1. Hard lock camera orientation directly onto the closest player's head
 				camera.CFrame = CFrame.lookAt(camPosition, targetPosition)
 
-				-- 2. Pull the directional data from the freshly locked camera and feed it to the body.
-				-- This bypasses physics fights and lets you retain full control/movement.
+				-- 2. Snap body rotation to mirror the camera's locked look-vector instantly
 				local LookVector = camera.CFrame.LookVector
 				rootPart.CFrame = CFrame.new(rootPart.CFrame.Position, rootPart.CFrame.Position + Vector3.new(LookVector.X, 0, LookVector.Z))
 			end
+		else
+			-- If aimbot is active but no targets are near, temporarily let the user turn the camera
+			camera.CameraType = Enum.CameraType.Custom
+		end
+	else
+		-- FIX 2: The moment you turn the UI toggle off, restore standard camera control completely
+		if lastToggleState == true then
+			camera.CameraType = Enum.CameraType.Custom
 		end
 	end
+	
+	lastToggleState = AimBot
 end)
