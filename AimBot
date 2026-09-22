@@ -11,7 +11,6 @@ if _G.AimBot == nil then
 	_G.AimBot = false
 end
 
--- Team Check Fix: Rivals is competitive team-based, don't snap to teammates
 local function getClosestPlayerHead()
 	local closestHead = nil
 	local shortestDistance = math.huge
@@ -24,7 +23,7 @@ local function getClosestPlayerHead()
 	local localPos = localCharacter.HumanoidRootPart.Position
 
 	for _, player in ipairs(Players:GetPlayers()) do
-		-- Make sure they aren't you AND aren't on your team
+		-- Team check for Rivals (Knife Duels doesn't mind it)
 		if player ~= localPlayer and player.Team ~= localPlayer.Team then
 			local character = player.Character
 
@@ -47,8 +46,8 @@ local function getClosestPlayerHead()
 	return closestHead
 end
 
--- Smoothness factor: 1 is instant snap, lower decimals (e.g., 0.2) make it look human
-local Smoothness = 1 
+-- Smoothness factor: 1 is instant snap, lower decimals (e.g., 0.15) make it bypass anti-cheats
+local Smoothness = 1
 
 RunService.RenderStepped:Connect(function()
 	if _G.AimBot == true then
@@ -61,19 +60,20 @@ RunService.RenderStepped:Connect(function()
 			if rootPart then
 				local camCFrame = camera.CFrame
 				local targetPosition = targetHead.Position
-
-				-- Create the exact look-at orientation matrix for first-person
 				local targetCFrame = CFrame.lookAt(camCFrame.Position, targetPosition)
 
-				-- Bypasses "Scriptable" locks by interpolating (lerping) native CFrames 
+				-- UNIVERSAL OVERRIDE: This tricks BOTH Knife Duels and Rivals' custom camera scripts
+				local oldType = camera.CameraType
+				camera.CameraType = Enum.CameraType.Scriptable
+				
 				if Smoothness == 1 then
 					camera.CFrame = targetCFrame
 				else
 					camera.CFrame = camCFrame:Lerp(targetCFrame, Smoothness)
 				end
 				
-				-- In first person, Roblox automatically turns your HumanoidRootPart 
-				-- to match the camera. No extra rootPart math is needed here!
+				-- Immediately hand back control so the game doesn't freeze your mouse inputs
+				camera.CameraType = oldType
 			end
 		end
 	end
